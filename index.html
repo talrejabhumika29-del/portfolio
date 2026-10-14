@@ -1,0 +1,781 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bhumika Talreja's personal portfolio">
+    <title>Bhumika Talreja | My Portfolio</title>
+
+    <style>
+        /* 1. BASIC SETTINGS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #7950c9;
+            --light-purple: #f1eaff;
+            --dark: #28213b;
+            --text: #625c70;
+            --white: #ffffff;
+            --background: #fcfaff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            padding: 85px 0;
+            scroll-margin-top: 75px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--text);
+            margin-bottom: 40px;
+        }
+
+        /* 2. NAVIGATION BAR */
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #eee5ff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            min-height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* CSS-only mobile menu */
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        /* 3. HERO SECTION */
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 90% 20%,
+                #e8d9ff 0, transparent 35%),
+                var(--background);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .greeting {
+            display: inline-block;
+            background: var(--light-purple);
+            color: var(--primary);
+            padding: 7px 16px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--text);
+            margin-bottom: 28px;
+            max-width: 560px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 23px;
+            border-radius: 9px;
+            border: 2px solid var(--primary);
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #6036ad;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--light-purple);
+            color: var(--primary);
+        }
+
+        .profile-card {
+            background: white;
+            border: 1px solid #eee5ff;
+            padding: 35px 25px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 45px rgba(92, 58, 150, 0.10);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: var(--light-purple);
+            color: var(--primary);
+            border: 5px solid white;
+            box-shadow: 0 0 0 2px #e3d1ff;
+            display: grid;
+            place-items: center;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .profile-card p {
+            margin: 5px auto;
+        }
+
+        .profile-tag {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* 4. ABOUT SECTION */
+
+        #about {
+            background: white;
+        }
+
+        .about-card {
+            max-width: 850px;
+            margin: auto;
+            padding: 30px;
+            background: var(--background);
+            border-radius: 18px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .about-card p {
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 5. SKILLS SECTION */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px 15px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #eee5ff;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px #7950c91a;
+            border-color: var(--primary);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.05rem;
+        }
+
+        .skill-card p {
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        /* 6. PROJECTS SECTION */
+
+        #projects {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .project-card {
+            border: 1px solid #eee5ff;
+            border-radius: 18px;
+            overflow: hidden;
+            background: var(--background);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px #7950c91a;
+        }
+
+        .project-banner {
+            min-height: 140px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg,
+                #e5d5ff, #f7f0ff);
+            font-size: 3rem;
+        }
+
+        .project-info {
+            padding: 22px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--text);
+            font-size: 0.93rem;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--light-purple);
+            color: var(--primary);
+            padding: 4px 10px;
+            margin: 3px 3px 3px 0;
+            border-radius: 20px;
+            font-size: 0.78rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 7. CONTACT SECTION */
+
+        .contact-card {
+            max-width: 700px;
+            margin: auto;
+            padding: 35px;
+            background: white;
+            border: 1px solid #eee5ff;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .contact-card p {
+            color: var(--text);
+            margin-bottom: 22px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /* 8. FOOTER */
+
+        footer {
+            padding: 25px 0;
+            text-align: center;
+            background: var(--dark);
+            color: white;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #d7c2ff;
+        }
+
+        /* 9. RESPONSIVE DESIGN */
+
+        @media (max-width: 800px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 45px 0;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .profile-card {
+                max-width: 400px;
+                width: 100%;
+                margin: auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                gap: 18px;
+                border-bottom: 1px solid #eee5ff;
+            }
+
+            #menu-toggle:checked ~ .nav-links {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 520px) {
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                padding: 25px 18px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Respect reduced-motion preferences */
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">Bhumika.</a>
+
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon"
+                   aria-label="Toggle navigation">&#9776;</label>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HERO / INTRODUCTION -->
+        <section class="hero" id="home">
+            <div class="container hero-content">
+
+                <div>
+                    <span class="greeting">Hello! Welcome to my portfolio</span>
+
+                    <h1>Hi, I'm <span>Bhumika Talreja</span></h1>
+
+                    <p>
+                        I'm a student who loves learning, creating,
+                        exploring new ideas, and turning ideas into
+                        meaningful projects. Welcome to my little
+                        corner of the internet!
+                    </p>
+
+                    <div class="buttons">
+                        <a href="#projects" class="btn">
+                            Explore My Work
+                        </a>
+
+                        <a href="#contact" class="btn btn-outline">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <div class="avatar" aria-label="Bhumika initials">
+                        BT
+                    </div>
+
+                    <h2>Bhumika Talreja</h2>
+                    <p class="profile-tag">Student & Creative Learner</p>
+                    <p>Learning • Building • Growing</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ABOUT ME -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About <span>Me</span></h2>
+
+                <p class="section-description">
+                    A little introduction about who I am.
+                </p>
+
+                <div class="about-card">
+                    <p>
+                        Hi! I'm Bhumika Talreja. I'm curious, creative,
+                        and always excited to learn something new.
+                    </p>
+
+                    <p>
+                        I enjoy exploring technology, building websites,
+                        photography, cooking, and dancing. I believe that
+                        small steps, consistent learning, and curiosity
+                        can help us achieve big goals.
+                    </p>
+
+                    <p>
+                        This portfolio is my space to showcase my skills,
+                        projects, interests, and learning journey.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">My <span>Skills</span></h2>
+
+                <p class="section-description">
+                    Technologies and interests I'm exploring.
+                </p>
+
+                <div class="skills-grid">
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🌐</div>
+                        <h3>HTML</h3>
+                        <p>Building webpage structure</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🎨</div>
+                        <h3>CSS</h3>
+                        <p>Styling and responsive layouts</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🐍</div>
+                        <h3>Python</h3>
+                        <p>Learning programming concepts</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">🗄️</div>
+                        <h3>SQL</h3>
+                        <p>Working with database queries</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">📸</div>
+                        <h3>Photography</h3>
+                        <p>Capturing creative moments</p>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">💡</div>
+                        <h3>Creative Thinking</h3>
+                        <p>Exploring and developing ideas</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">My <span>Projects</span></h2>
+
+                <p class="section-description">
+                    Some project ideas and work from my learning journey.
+                </p>
+
+                <div class="projects-grid">
+
+                    <article class="project-card">
+                        <div class="project-banner">🛒</div>
+
+                        <div class="project-info">
+                            <h3>Expiry Alert</h3>
+
+                            <p>
+                                A grocery expiry management concept
+                                designed to help users organize products
+                                and keep track of expiry dates.
+                            </p>
+
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Database</span>
+
+                            <a href="#contact" class="project-link">
+                                Ask About Project →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-banner">📊</div>
+
+                        <div class="project-info">
+                            <h3>Smart Health Dashboard</h3>
+
+                            <p>
+                                A dashboard concept for presenting
+                                health-related information in a clear,
+                                organized visual format.
+                            </p>
+
+                            <span class="tag">Dashboard</span>
+                            <span class="tag">Data Visualization</span>
+
+                            <a href="#contact" class="project-link">
+                                Ask About Project →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-banner">🦺</div>
+
+                        <div class="project-info">
+                            <h3>Worker Safety Assistant</h3>
+
+                            <p>
+                                A safety assistance concept involving
+                                worker tracking, alerts, and monitoring
+                                for sanitation workers.
+                            </p>
+
+                            <span class="tag">Safety</span>
+                            <span class="tag">IoT Concept</span>
+
+                            <a href="#contact" class="project-link">
+                                Ask About Project →
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Let's <span>Connect</span></h2>
+
+                <p class="section-description">
+                    Have a question or an idea? I'd love to hear from you.
+                </p>
+
+                <div class="contact-card">
+                    <h3>Get in touch with me 💌</h3>
+
+                    <p>
+                        Feel free to contact me about projects,
+                        learning, collaboration, or creative ideas.
+                    </p>
+
+                    <div class="contact-links">
+                        <!-- Replace this email with your real email -->
+                        <a class="btn"
+                           href="mailto:your.email@example.com">
+                            Email Me
+                        </a>
+
+                        <!-- Replace # with your real profile URL -->
+                        <a class="btn btn-outline"
+                           href="https://github.com/"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub
+                        </a>
+
+                        <a class="btn btn-outline"
+                           href="https://www.linkedin.com/"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>
+                Made with by Bhumika Talreja
+            </p>
+            <p>
+                Keep learning. Keep creating. Keep growing.
+            </p>
+            <p>
+                © 2026 Bhumika Talreja.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
